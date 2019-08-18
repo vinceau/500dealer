@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, RouteComponentProps, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, RouteComponentProps, Redirect } from "react-router-dom";
 import { GameForm } from "./components/GameForm";
 
 function BasicExample() {
