@@ -30,7 +30,7 @@ export const GameForm: React.SFC<GameFormProps> = (props) => {
             </div>
             <div>
                 <label htmlFor="seed">The secret code for this round is:</label>
-                <input id="seed" readOnly value={props.code}/>
+                <input id="seed" readOnly value={props.code} />
                 <button onClick={newCode}>
                     <span aria-label="dice" role="img">🎲</span> New Code
                 </button>
