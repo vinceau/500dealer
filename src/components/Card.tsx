@@ -19,12 +19,12 @@ export const Card: React.SFC<CardProps> = (props) => {
 
 const getRank = (value: number): number => {
     //joker is 0 but show 1 anyway
-    if (value === 0 || value === 14) {
+    if (value === 0 || value === 17) {
         return 1;
     }
-    else if (value > 10) {
-        return value + 3;
-    }
+    // else if (value > 10) {
+    //     return value + 3;
+    // }
     return value;
 }
 

@@ -1,6 +1,6 @@
 import seedrandom from "seedrandom";
 
-const values = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+const values = [5, 6, 7, 8, 9, 10, 14, 15, 16, 17];
 const suits = ['S', 'C', 'D', 'H'];
 
 // Shuffles an array in place
@@ -55,7 +55,11 @@ export class FiveHundredDeck {
     cards: FiveHundredCard[];
 
     constructor(players: number, randomSeed: string) {
-        this.seed = randomSeed;
+        if (players < 4 || players > 6) {
+            throw new Error(`Number of players must be between 4 and 6. Got: ${players}`);
+        }
+
+        this.seed = randomSeed + players.toString();
         this.cards = [];
         suits.forEach((suit) => {
             values.forEach((val) => {
@@ -65,6 +69,29 @@ export class FiveHundredDeck {
         this.cards.push(new FiveHundredCard(4, 'D'));
         this.cards.push(new FiveHundredCard(4, 'H'));
         this.cards.push(new FiveHundredCard(0, 'X'));
+
+        if (players >= 5) {
+            this.cards.push(new FiveHundredCard(4, 'C'));
+            this.cards.push(new FiveHundredCard(4, 'S'));
+            // adds 2s, and 3s
+            suits.forEach((suit) => {
+                this.cards.push(new FiveHundredCard(2, suit));
+                this.cards.push(new FiveHundredCard(3, suit));
+            });
+        }
+
+        if (players === 6) {
+            // adds 11s, and 12s
+            suits.forEach((suit) => {
+                [11, 12].forEach((val) => {
+                    this.cards.push(new FiveHundredCard(val, suit));
+                })
+            });
+            // add red 13s
+            this.cards.push(new FiveHundredCard(13, 'D'));
+            this.cards.push(new FiveHundredCard(13, 'H'));
+        }
+
     }
 
     shuffle() {
