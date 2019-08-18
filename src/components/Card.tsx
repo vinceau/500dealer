@@ -8,7 +8,7 @@ interface CardProps {
 
 export const Card: React.SFC<CardProps> = (props) => {
   const [clicked, setClicked] = useState(false);
-  const outerClasses = clicked ? "" : `${props.suit} rank${getRank(props.rank)}`;
+  const outerClasses = clicked ? "" : `${getSuit(props.suit)} rank${getRank(props.rank)}`;
   const innerClasses = clicked ? "back" : "face";
   return (
     <div onClick={() => setClicked(!clicked)} className={`card ${outerClasses}`}>
@@ -26,5 +26,21 @@ const getRank = (value: number): number => {
         return value + 3;
     }
     return value;
+}
+
+function getSuit(suit: string) {
+  if (suit === 'S') {
+      return 'spades';
+  }
+  else if (suit === 'C') {
+      return 'clubs';
+  }
+  else if (suit === 'D') {
+      return 'diamonds';
+  }
+  else if (suit === 'H') {
+      return 'hearts';
+  }
+  return 'joker';
 }
 

@@ -1,28 +1,29 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route, RouteComponentProps, Redirect } from "react-router-dom";
+import { GameForm } from "./components/GameForm";
 
-import logo from './logo.svg';
-import { Card } from './components/Card/Card';
-
-const App: React.FC = () => {
+function BasicExample() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Card suit="spades" rank={13} />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route path="/game/:code" component={Child} />
+      </div>
+    </Router>
   );
 }
 
-export default App;
+function Home() {
+  const randomCode = Math.random().toString(36).slice(2);
+  return (
+    <Redirect to={{ pathname: `/game/${randomCode}` }} />
+  );
+}
+
+function Child({ match }: RouteComponentProps<{code: string}>) {
+  return (
+    <GameForm code={match.params.code} />
+  );
+}
+
+export default BasicExample;
