@@ -1,5 +1,5 @@
-$color_1: #000;
-$color_2: #d40000;
+$black: #000;
+$red: #d40000;
 $font_family_1: 'Ubuntu Condensed', sans-serif;
 $background_color_1: #fff;
 
@@ -58,19 +58,19 @@ $background_color_1: #fff;
 	}
 }
 .card.spades {
-	color: $color_1;
+	color: $black;
 }
 .card.clubs {
-	color: $color_1;
+	color: $black;
 }
 .card.joker {
-	color: $color_1;
+	color: $black;
 }
 .card.hearts {
-	color: $color_2;
+	color: $red;
 }
 .card.diamonds {
-	color: $color_2;
+	color: $red;
 }
 .card.joker {
 	&.rank1, &.rank2, &.rank3 {
@@ -101,7 +101,7 @@ $background_color_1: #fff;
 		background-image: url("#{$faces}/4_3.svg");
 	}
 	&.rank3 {
-		color: $color_2;
+		color: $red;
 	}
 }
 .card.rank1 {
