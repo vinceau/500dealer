@@ -54,7 +54,7 @@ export const Game: React.SFC<GameProps> = (props) => {
                 <button disabled={player === 0} onClick={deal}>🃋 Deal me the cards</button>
                 <button disabled={player === 0 || kittyShown} onClick={kitty}>
                     <span aria-label="cat" role="img">😻</span> meow
-                    </button>
+                </button>
             </div>
             <ul id="cards">{hand.map((card) => {
                 return <Card key={card.repr()} rank={card.value} suit={card.suit} />
