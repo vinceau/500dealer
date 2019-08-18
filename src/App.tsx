@@ -4,7 +4,7 @@ import { GameForm } from "./components/GameForm";
 
 function BasicExample() {
   return (
-    <Router basename="/500dealer">
+    <Router basename="/">
       <div>
         <Route exact path="/" component={Home} />
         <Route path="/game/:code" component={Child} />
