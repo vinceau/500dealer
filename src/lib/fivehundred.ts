@@ -84,7 +84,7 @@ export class FiveHundredDeck {
 }
 
 export class FiveHundredGame {
-    numPlayers: number
+    numPlayers: number;
     deck: FiveHundredDeck;
 
     constructor(players: number, randomSeed: string) {
@@ -97,12 +97,12 @@ export class FiveHundredGame {
         if (player < 1 || player > this.numPlayers) {
             return [];
         }
-        let start = (player - 1) * 10;
+        const start = (player - 1) * 10;
         return this.deck.cards.slice(start, start + 10)
     }
 
     kitty(): FiveHundredCard[] {
-        let start = this.numPlayers * 10;
+        const start = this.numPlayers * 10;
         return this.deck.cards.slice(start, start + 3)
     }
 }
