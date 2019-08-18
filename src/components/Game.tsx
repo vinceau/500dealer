@@ -9,6 +9,7 @@ interface GameProps {
 
 export const Game: React.SFC<GameProps> = (props) => {
     const [player, setPlayer] = useState(0);
+    const [kittyShown, setKittyShown] = useState(false);
     const [hand, setHand] = useState<FiveHundredCard[]>([]);
 
 
@@ -18,13 +19,23 @@ export const Game: React.SFC<GameProps> = (props) => {
     for (let i=0; i < props.players; i++) {
         options.push(<option key={`optionPlayer${i+1}`} value={i+1}>Player {i+1}</option>);
     }
-    const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
+    const reset = () => {
         setHand([]);
+        setKittyShown(false);
+    }
+    const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
         setPlayer(parseInt(event.currentTarget.value));
     }
-    const deal = (whichPlayer: number) => {
-        if (whichPlayer !== 0) {
-            setHand(game.deal(whichPlayer).sort(FiveHundredCardCompare));
+    const deal = () => {
+        if (player !== 0) {
+            reset();
+            setHand(game.deal(player).sort(FiveHundredCardCompare));
+        }
+    }
+    const kitty = () => {
+        if (!kittyShown) {
+            setHand(hand.concat(game.kitty()));
+            setKittyShown(true);
         }
     }
     return (
@@ -36,10 +47,8 @@ export const Game: React.SFC<GameProps> = (props) => {
                     {options}
                 </select>
                 <span>{player}</span>
-                <button disabled={player === 0} onClick={() => {
-                    deal(player);
-                }}>🃋 Deal me the cards</button>
-                <button disabled={player === 0}>😻 meow</button>
+                <button disabled={player === 0} onClick={deal}>🃋 Deal me the cards</button>
+                <button disabled={player === 0 || kittyShown} onClick={kitty}>😻 meow</button>
             </div>
             <ul id="cards">{hand.map((card) => {
                 return <Card key={card.repr()} rank={card.value} suit={card.suit} />
