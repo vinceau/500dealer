@@ -18,10 +18,14 @@ export const Card: React.SFC<CardProps> = (props) => {
 
 const getRank = (value: number): number => {
     // show 1 for joker and ace
-    if (value === 0 || value === 17) {
-        return 1;
+    switch (value) {
+        case 0: // joker rank
+            return 3;
+        case 17: // ace rank
+            return 1;
+        default:
+            return value;
     }
-    return value;
 }
 
 function getSuit(suit: string) {
