@@ -1,22 +1,7 @@
-import seedrandom from "seedrandom";
+import { seedshuffle } from "./seedshuffle";
 
 const values = [5, 6, 7, 8, 9, 10, 14, 15, 16, 17];
 const suits = ['S', 'C', 'D', 'H'];
-
-// Shuffles an array in place
-const shuffle = (array: any, seed: string) => {
-    const rng = seedrandom(seed);
-    var i = 0
-        , j = 0
-        , temp = null
-
-    for (i = array.length - 1; i > 0; i -= 1) {
-        j = Math.floor(rng() * (i + 1))
-        temp = array[i]
-        array[i] = array[j]
-        array[j] = temp
-    }
-}
 
 export class FiveHundredCard {
     value: number;
@@ -94,7 +79,7 @@ export class FiveHundredDeck {
     }
 
     shuffle() {
-        shuffle(this.cards, this.seed);
+        seedshuffle(this.cards, this.seed);
     }
 }
 
