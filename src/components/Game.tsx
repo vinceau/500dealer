@@ -51,7 +51,9 @@ export const Game: React.SFC<GameProps> = (props) => {
             <div>
                 <label htmlFor="seed">The secret code for this round is:</label>
                 <input id="seed" readOnly value={props.code}/>
-                <button onClick={newCode}>🎲 New Code</button>
+                <button onClick={newCode}>
+                    <span aria-label="dice" role="img">🎲</span> New Code
+                </button>
             </div>
             <div>
                 <div>
@@ -61,7 +63,9 @@ export const Game: React.SFC<GameProps> = (props) => {
                         {options}
                     </select>
                     <button disabled={player === 0} onClick={deal}>🃋 Deal me the cards</button>
-                    <button disabled={player === 0 || kittyShown} onClick={kitty}>😻 meow</button>
+                    <button disabled={player === 0 || kittyShown} onClick={kitty}>
+                        <span aria-label="cat" role="img">😻</span> meow
+                    </button>
                 </div>
                 <ul id="cards">{hand.map((card) => {
                     return <Card key={card.repr()} rank={card.value} suit={card.suit} />
