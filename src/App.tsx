@@ -1,5 +1,7 @@
 import React from 'react';
+
 import logo from './logo.svg';
+import { Card } from './components/Card/Card';
 
 const App: React.FC = () => {
   return (
@@ -9,6 +11,7 @@ const App: React.FC = () => {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Card suit="spades" rank={13} />
         <a
           className="App-link"
           href="https://reactjs.org"
