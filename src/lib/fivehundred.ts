@@ -83,9 +83,8 @@ export class FiveHundredDeck {
         if (players === 6) {
             // adds 11s, and 12s
             suits.forEach((suit) => {
-                [11, 12].forEach((val) => {
-                    this.cards.push(new FiveHundredCard(val, suit));
-                })
+                this.cards.push(new FiveHundredCard(11, suit));
+                this.cards.push(new FiveHundredCard(12, suit));
             });
             // add red 13s
             this.cards.push(new FiveHundredCard(13, 'D'));
