@@ -26,6 +26,7 @@ export const Game: React.SFC<GameProps> = (props) => {
         options.push(<option key={`optionPlayer${i+1}`} value={i+1}>Player {i+1}</option>);
     }
     const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
+        reset();
         setPlayer(parseInt(event.currentTarget.value));
     }
     const deal = () => {
