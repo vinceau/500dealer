@@ -1,29 +1,28 @@
 import React from "react";
 import { HashRouter as Router, Route, RouteComponentProps, Redirect } from "react-router-dom";
-import { GameForm } from "./components/GameForm";
+import { GameForm } from "./GameForm";
 
-function BasicExample() {
+export const App = () => {
   return (
     <Router basename="/">
       <div>
-        <Route exact path="/" component={Home} />
-        <Route path="/game/:code" component={Child} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/game/:code" component={GamePage} />
       </div>
     </Router>
   );
 }
 
-function Home() {
+const HomePage = () => {
   const randomCode = Math.random().toString(36).slice(2);
   return (
     <Redirect to={{ pathname: `/game/${randomCode}` }} />
   );
 }
 
-function Child({ match }: RouteComponentProps<{code: string}>) {
+const GamePage = ({ match }: RouteComponentProps<{code: string}>) => {
   return (
     <GameForm code={match.params.code} />
   );
 }
 
-export default BasicExample;
