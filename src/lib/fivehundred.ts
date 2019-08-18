@@ -15,10 +15,10 @@ export class FiveHundredCard {
     repr(): string {
         if (this.suit === 'X') return 'X';
         let displayValue: string = this.value.toString();
-        if (this.value === 11) displayValue = 'J';
-        if (this.value === 12) displayValue = 'Q';
-        if (this.value === 13) displayValue = 'K';
-        if (this.value === 14) displayValue = 'A';
+        if (this.value === 14) displayValue = 'J';
+        if (this.value === 15) displayValue = 'Q';
+        if (this.value === 16) displayValue = 'K';
+        if (this.value === 17) displayValue = 'A';
         return displayValue + this.suit;
     }
 
