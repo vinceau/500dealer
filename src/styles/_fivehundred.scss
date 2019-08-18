@@ -72,68 +72,36 @@ $background_color_1: #fff;
 .card.diamonds {
 	color: $color_2;
 }
-.card.joker.rank3 {
-	color: $color_2;
-	&:before {
-		content: "J\a O\a K\a E\a R";
-		letter-spacing: 0;
-		font-size: 0.4rem;
-		line-height: 0.4rem;
-		padding: 0.15rem 0.05rem;
-		width: 0.5rem;
+.card.joker {
+	&.rank1, &.rank2, &.rank3 {
+		&:before {
+			content: "J\a O\a K\a E\a R";
+			letter-spacing: 0;
+			font-size: 0.4rem;
+			line-height: 0.4rem;
+			padding: 0.15rem 0.05rem;
+			width: 0.5rem;
+		}
+		&:after {
+			content: "J\a O\a K\a E\a R";
+			letter-spacing: 0;
+			font-size: 0.4rem;
+			line-height: 0.4rem;
+			padding: 0.15rem 0.05rem;
+			width: 0.5rem;
+		}
 	}
-	&:after {
-		content: "J\a O\a K\a E\a R";
-		letter-spacing: 0;
-		font-size: 0.4rem;
-		line-height: 0.4rem;
-		padding: 0.15rem 0.05rem;
-		width: 0.5rem;
+	&.rank1 .face {
+			background-image: url("#{$faces}/4_1.svg");
 	}
-	.face {
+	&.rank2 .face {
+		background-image: url("#{$faces}/4_2.svg");
+	}
+	&.rank3 .face {
 		background-image: url("#{$faces}/4_3.svg");
 	}
-}
-.card.joker.rank1 {
-	&:before {
-		content: "J\a O\a K\a E\a R";
-		letter-spacing: 0;
-		font-size: 0.4rem;
-		line-height: 0.4rem;
-		padding: 0.15rem 0.05rem;
-		width: 0.5rem;
-	}
-	&:after {
-		content: "J\a O\a K\a E\a R";
-		letter-spacing: 0;
-		font-size: 0.4rem;
-		line-height: 0.4rem;
-		padding: 0.15rem 0.05rem;
-		width: 0.5rem;
-	}
-	.face {
-		background-image: url("#{$faces}/4_1.svg");
-	}
-}
-.card.joker.rank2 {
-	&:before {
-		content: "J\a O\a K\a E\a R";
-		letter-spacing: 0;
-		font-size: 0.4rem;
-		line-height: 0.4rem;
-		padding: 0.15rem 0.05rem;
-		width: 0.5rem;
-	}
-	&:after {
-		content: "J\a O\a K\a E\a R";
-		letter-spacing: 0;
-		font-size: 0.4rem;
-		line-height: 0.4rem;
-		padding: 0.15rem 0.05rem;
-		width: 0.5rem;
-	}
-	.face {
-		background-image: url("#{$faces}/4_2.svg");
+	&.rank3 {
+		color: $color_2;
 	}
 }
 .card.rank1 {
