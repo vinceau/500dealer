@@ -41,12 +41,11 @@ export const Game: React.SFC<GameProps> = (props) => {
     return (
         <div>
             <div>
-                <label htmlFor="player-option">I am the player:</label>
+                <label htmlFor="player-option">I am:</label>
                 <select value={player} onChange={handleChange}>
                     <option value={0} />
                     {options}
                 </select>
-                <span>{player}</span>
                 <button disabled={player === 0} onClick={deal}>🃋 Deal me the cards</button>
                 <button disabled={player === 0 || kittyShown} onClick={kitty}>😻 meow</button>
             </div>
