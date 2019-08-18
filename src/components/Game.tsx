@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import useReactRouter from 'use-react-router';
 import { FiveHundredGame, FiveHundredCard, FiveHundredCardCompare } from '../lib/fivehundred';
@@ -21,12 +21,15 @@ export const Game: React.SFC<GameProps> = (props) => {
 
     const game = new FiveHundredGame(props.players, props.code);
 
+    useEffect(() => {
+        reset();
+      }, [props.players, props.code, player]);
+
     let options = [];
     for (let i=0; i < props.players; i++) {
         options.push(<option key={`optionPlayer${i+1}`} value={i+1}>Player {i+1}</option>);
     }
     const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
-        reset();
         setPlayer(parseInt(event.currentTarget.value));
     }
     const deal = () => {
@@ -42,7 +45,6 @@ export const Game: React.SFC<GameProps> = (props) => {
         }
     }
     const newCode = () => {
-        reset();
         const randomCode = Math.random().toString(36).slice(2);
         history.push(`/game/${randomCode}`);
     }
