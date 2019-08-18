@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import useReactRouter from 'use-react-router';
 import { Game } from './Game';
 
 interface GameFormProps {
@@ -8,19 +7,22 @@ interface GameFormProps {
 }
 
 export const GameForm: React.SFC<GameFormProps> = (props) => {
-    const { history } = useReactRouter();
+    const [numPlayers, setNumPlayers] = useState(4);
+    const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
+        setNumPlayers(parseInt(event.currentTarget.value));
+    }
     return (
         <div>
             <h1>500 cards dealer</h1>
             <div>
-                <label htmlFor="seed">The secret code for this round is:</label>
-                <input id="seed" readOnly value={props.code}/>
-                <button onClick={() => {
-                    const randomCode = Math.random().toString(36).slice(2);
-                    history.push(`/game/${randomCode}`);
-                }}>🎲 New Code</button>
+                <label htmlFor="player-option">No. Players:</label>
+                <select value={numPlayers} onChange={handleChange}>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                    <option value={6}>6</option>
+                </select>
             </div>
-            <Game players={4} code={props.code}/>
+            <Game code={props.code} players={numPlayers} />
         </div>
     );
 }
