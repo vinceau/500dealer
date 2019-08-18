@@ -20,7 +20,7 @@ const getRank = (value: number): number => {
     // show 1 for joker and ace
     switch (value) {
         case 0: // joker rank
-            return 3;
+            return 1;
         case 17: // ace rank
             return 1;
         default:
