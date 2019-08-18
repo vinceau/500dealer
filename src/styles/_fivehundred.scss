@@ -1,7 +1,7 @@
 $black: #000;
 $red: #d40000;
 $font_family_1: 'Ubuntu Condensed', sans-serif;
-$background_color_1: #fff;
+$white: #fff;
 
 .card {
 	position: absolute;
@@ -10,7 +10,7 @@ $background_color_1: #fff;
 	top: -2.75rem;
 	width: 3.875rem;
 	height: 5.5rem;
-	background-color: $background_color_1;
+	background-color: $white;
 	border-radius: 4px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 	cursor: default;
