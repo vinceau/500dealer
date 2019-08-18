@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn run build; git add build -f; git commit -m 'Deploying to Github pages'; git push origin `git subtree split --prefix build master`:gh-pages --force"
   },
   "eslintConfig": {
     "extends": "react-app"
