@@ -14,7 +14,7 @@ $white: #fff;
 	border-radius: 4px;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 	cursor: default;
-	&:before {
+	&:before, &:after {
 		position: absolute;
 		font-size: 0.7rem;
 		text-align: center;
@@ -23,18 +23,12 @@ $white: #fff;
 		white-space: pre-line;
 		width: 0.55rem;
 		letter-spacing: -0.1rem;
+	}
+	&:before {
 		top: 0.15rem;
 		left: 0;
 	}
 	&:after {
-		position: absolute;
-		font-size: 0.7rem;
-		text-align: center;
-		line-height: 0.7rem;
-		font-family: $font_family_1;
-		white-space: pre-line;
-		width: 0.55rem;
-		letter-spacing: -0.1rem;
 		bottom: 0.1rem;
 		right: 0;
 		transform: rotate(180deg);
