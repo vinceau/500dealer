@@ -96,7 +96,7 @@ export class FiveHundredGame {
 
     public deal(player: number): FiveHundredCard[] {
         if (player < 1 || player > this.numPlayers) {
-            return [];
+            throw new Error(`Invalid player number: ${player}`);
         }
         const start = (player - 1) * 10;
         return this.deck.cards.slice(start, start + 10)
