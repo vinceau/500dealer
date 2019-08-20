@@ -5,10 +5,8 @@ import { GameForm } from "./GameForm";
 export const App = () => {
   return (
     <Router basename="/">
-      <div>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/game/:code" component={GamePage} />
-      </div>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/game/:code" component={GamePage} />
     </Router>
   );
 }
