@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-import { FiveHundredGame, FiveHundredCard, FiveHundredCardCompare } from '../lib/fivehundred';
+import { FiveHundredGame, FiveHundredCard } from '../lib/fivehundred';
 import { Card } from './Card';
 
 interface GameProps {
@@ -34,7 +34,7 @@ export const Game: React.SFC<GameProps> = (props) => {
     const deal = () => {
         if (player !== 0) {
             reset();
-            setHand(game.deal(player).sort(FiveHundredCardCompare));
+            setHand(game.deal(player).sort(FiveHundredCard.compare));
         }
     }
     const kitty = () => {
