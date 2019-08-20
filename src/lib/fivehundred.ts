@@ -22,15 +22,15 @@ export class FiveHundredCard {
         return displayValue + this.suit;
     }
 
-    public sortingValue(): number {
+    public static compare(card1: FiveHundredCard, card2: FiveHundredCard): number {
+        return card1.sortingValue() - card2.sortingValue();
+    }
+
+    private sortingValue(): number {
         if (this.suit === 'X') {
             return 1000;
         }
         return suits.indexOf(this.suit) * 100 + this.value;
-    }
-
-    public static compare(card1: FiveHundredCard, card2: FiveHundredCard): number {
-        return card1.sortingValue() - card2.sortingValue();
     }
 
 }
