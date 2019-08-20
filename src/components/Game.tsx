@@ -24,11 +24,11 @@ export const Game: React.SFC<GameProps> = (props) => {
         reset();
     }, [props.players, props.code, player]);
 
-    let options = [];
+    const options = [];
     for (let i = 0; i < props.players; i++) {
         options.push(<option key={`optionPlayer${i + 1}`} value={i + 1}>Player {i + 1}</option>);
     }
-    const handleChange = (event: React.FormEvent<HTMLSelectElement>) => {
+    const handlePlayerChange = (event: React.FormEvent<HTMLSelectElement>) => {
         setPlayer(parseInt(event.currentTarget.value));
     }
     const deal = () => {
@@ -47,7 +47,7 @@ export const Game: React.SFC<GameProps> = (props) => {
         <div>
             <div>
                 <label htmlFor="player-option">I am:</label>
-                <select value={player} onChange={handleChange}>
+                <select value={player} onChange={handlePlayerChange}>
                     <option value={0} />
                     {options}
                 </select>

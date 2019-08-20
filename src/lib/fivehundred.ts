@@ -35,6 +35,7 @@ export class FiveHundredCard {
 
 }
 
+const Joker = new FiveHundredCard(0, 'X');
 
 export class FiveHundredDeck {
     private seed: string;
@@ -52,9 +53,11 @@ export class FiveHundredDeck {
                 this.cards.push(new FiveHundredCard(val, suit));
             })
         });
+        // add the joker
+        this.cards.push(Joker);
+        // add black 4s
         this.cards.push(new FiveHundredCard(4, 'D'));
         this.cards.push(new FiveHundredCard(4, 'H'));
-        this.cards.push(new FiveHundredCard(0, 'X'));
 
         if (players >= 5) {
             this.cards.push(new FiveHundredCard(4, 'C'));
