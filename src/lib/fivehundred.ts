@@ -4,15 +4,15 @@ const values = [5, 6, 7, 8, 9, 10, 14, 15, 16, 17];
 const suits = ['S', 'C', 'D', 'H'];
 
 export class FiveHundredCard {
-    value: number;
-    suit: string;
+    public readonly value: number;
+    public readonly suit: string;
 
     constructor(value: number, suit: string) {
         this.value = value;
         this.suit = suit;
     }
 
-    repr(): string {
+    public repr(): string {
         if (this.suit === 'X') return 'X';
         let displayValue: string = this.value.toString();
         if (this.value === 14) displayValue = 'J';
@@ -22,22 +22,23 @@ export class FiveHundredCard {
         return displayValue + this.suit;
     }
 
-    sortingValue(): number {
+    public sortingValue(): number {
         if (this.suit === 'X') {
             return 1000;
         }
         return suits.indexOf(this.suit) * 100 + this.value;
     }
+
+    public static compare(card1: FiveHundredCard, card2: FiveHundredCard): number {
+        return card1.sortingValue() - card2.sortingValue();
+    }
+
 }
 
-
-export const FiveHundredCardCompare = (card1: FiveHundredCard, card2: FiveHundredCard): number => {
-    return card1.sortingValue() - card2.sortingValue();
-}
 
 export class FiveHundredDeck {
-    seed: string;
-    cards: FiveHundredCard[];
+    private seed: string;
+    public cards: FiveHundredCard[];
 
     constructor(players: number, randomSeed: string) {
         if (players < 4 || players > 6) {
@@ -78,14 +79,14 @@ export class FiveHundredDeck {
 
     }
 
-    shuffle() {
+    public shuffle() {
         seedshuffle(this.cards, this.seed);
     }
 }
 
 export class FiveHundredGame {
-    numPlayers: number;
-    deck: FiveHundredDeck;
+    private numPlayers: number;
+    private deck: FiveHundredDeck;
 
     constructor(players: number, randomSeed: string) {
         this.numPlayers = players;
@@ -93,7 +94,7 @@ export class FiveHundredGame {
         this.deck.shuffle();
     }
 
-    deal(player: number): FiveHundredCard[] {
+    public deal(player: number): FiveHundredCard[] {
         if (player < 1 || player > this.numPlayers) {
             return [];
         }
@@ -101,7 +102,7 @@ export class FiveHundredGame {
         return this.deck.cards.slice(start, start + 10)
     }
 
-    kitty(): FiveHundredCard[] {
+    public kitty(): FiveHundredCard[] {
         const start = this.numPlayers * 10;
         return this.deck.cards.slice(start, start + 3)
     }
